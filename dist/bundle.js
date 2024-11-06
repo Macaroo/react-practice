@@ -33454,36 +33454,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_todo_Todolist__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/todo/Todolist */ "./src/js/components/todo/Todolist.tsx");
-/* harmony import */ var _components_parts_heading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/parts/heading */ "./src/js/components/parts/heading.tsx");
-/* harmony import */ var _components_todo_NewTodoForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/todo/NewTodoForm */ "./src/js/components/todo/NewTodoForm.tsx");
-/* harmony import */ var _components_todo_use_todo_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/todo/use-todo-list */ "./src/js/components/todo/use-todo-list.ts");
-/* harmony import */ var _components_todo_use_timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/todo/use-timer */ "./src/js/components/todo/use-timer.ts");
-/* harmony import */ var _contexts_AuthContexts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./contexts/AuthContexts */ "./src/js/contexts/AuthContexts.tsx");
-
-
-
-
+/* harmony import */ var _hooks_use_Auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
+/* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/Login */ "./src/js/pages/Login.tsx");
+/* harmony import */ var _pages_Todo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Todo */ "./src/js/pages/Todo.tsx");
 
 
 
 
 var App = function () {
-    var _a = (0,_components_todo_use_todo_list__WEBPACK_IMPORTED_MODULE_4__.useTodoList)(), todoList = _a.todoList, addTodo = _a.addTodo, deleteTodo = _a.deleteTodo;
-    var isLoggedIn = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_contexts_AuthContexts__WEBPACK_IMPORTED_MODULE_6__.AuthContext).isLoggedIn;
-    var time = (0,_components_todo_use_timer__WEBPACK_IMPORTED_MODULE_5__.useTimer)().time;
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", { className: "my-0 mx-auto w-4/5 text-center" },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_heading__WEBPACK_IMPORTED_MODULE_2__.Heading, { level: "h1" }, "TODO"),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, isLoggedIn ? "ログイン中" : "ログアウト中"),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null,
-            "\u30BF\u30A4\u30DE\u30FC : ",
-            time),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "mt-8" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_heading__WEBPACK_IMPORTED_MODULE_2__.Heading, { level: "h2" }, "\u65B0\u898FTODO\u4F5C\u6210"),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_todo_NewTodoForm__WEBPACK_IMPORTED_MODULE_3__.NewTodoForm, { addTodo: addTodo })),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "mt-8" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_heading__WEBPACK_IMPORTED_MODULE_2__.Heading, { level: "h2" }, "TODO\u4E00\u89A7"),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_todo_Todolist__WEBPACK_IMPORTED_MODULE_1__.TodoList, { todoList: todoList, deleteTodo: deleteTodo }))));
+    var isLoggedIn = (0,_hooks_use_Auth__WEBPACK_IMPORTED_MODULE_1__.useAuth)().isLoggedIn;
+    if (!isLoggedIn) {
+        return react__WEBPACK_IMPORTED_MODULE_0__.createElement(_pages_Login__WEBPACK_IMPORTED_MODULE_2__.Login, null);
+    }
+    return react__WEBPACK_IMPORTED_MODULE_0__.createElement(_pages_Todo__WEBPACK_IMPORTED_MODULE_3__.Todo, null);
 };
 
 
@@ -33505,7 +33488,7 @@ __webpack_require__.r(__webpack_exports__);
 var Button = function (_a) {
     var onClick = _a.onClick, color = _a.color, children = _a.children;
     var style = color === "red" ? "bg-red-400" : "bg-cyan-400";
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "border w-16 rounded ".concat(style), onClick: onClick }, children));
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "border w-fit px-1 rounded ".concat(style), onClick: onClick }, children));
 };
 
 
@@ -33618,28 +33601,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _parts_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../parts/Button */ "./src/js/components/parts/Button.tsx");
-/* harmony import */ var _use_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./use-timer */ "./src/js/components/todo/use-timer.ts");
-/* harmony import */ var _contexts_AuthContexts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../contexts/AuthContexts */ "./src/js/contexts/AuthContexts.tsx");
-
+/* harmony import */ var _hooks_use_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/use-timer */ "./src/js/hooks/use-timer.ts");
+/* harmony import */ var _hooks_use_Auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
 
 
 
 
 var TodoItem = function (_a) {
     var id = _a.id, task = _a.task, person = _a.person, deadline = _a.deadline, deleteTodo = _a.deleteTodo;
-    var isLoggedIn = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_contexts_AuthContexts__WEBPACK_IMPORTED_MODULE_3__.AuthContext).isLoggedIn;
-    var time = (0,_use_timer__WEBPACK_IMPORTED_MODULE_2__.useTimer)().time;
+    var userName = (0,_hooks_use_Auth__WEBPACK_IMPORTED_MODULE_3__.useAuth)().userName;
+    var style = userName === person ? "text-red-600 font-bold" : "";
+    var time = (0,_hooks_use_timer__WEBPACK_IMPORTED_MODULE_2__.useTimer)().time;
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null,
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", { className: "grid grid-cols-4" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, task),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, person),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: style }, person),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, deadline),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null,
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(_parts_Button__WEBPACK_IMPORTED_MODULE_1__.Button, { onClick: function () { return deleteTodo(id); }, color: "red" }, "\u524A\u9664"),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null,
                     "\u30BF\u30A4\u30DE\u30FC : ",
-                    time),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, isLoggedIn ? "ログイン中" : "ログアウト中")))));
+                    time)))));
 };
 
 
@@ -33673,17 +33655,91 @@ var TodoList = function (_a) {
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "\u62C5\u5F53\u8005\u540D"),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "\u7DE0\u5207"),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "\u524A\u9664")),
-            todoList.map(function (todo) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Todoitem__WEBPACK_IMPORTED_MODULE_1__.TodoItem, { key: todo.id, id: todo.id, task: todo.task, person: todo.person, deadline: todo.deadline, deleteTodo: deleteTodo })); })),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, isLoggedIn ? "ログイン中" : "ログアウト中")));
+            todoList.map(function (todo) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Todoitem__WEBPACK_IMPORTED_MODULE_1__.TodoItem, { key: todo.id, id: todo.id, task: todo.task, person: todo.person, deadline: todo.deadline, deleteTodo: deleteTodo })); }))));
 };
 
 
 /***/ }),
 
-/***/ "./src/js/components/todo/use-timer.ts":
-/*!*********************************************!*\
-  !*** ./src/js/components/todo/use-timer.ts ***!
-  \*********************************************/
+/***/ "./src/js/contexts/AuthContexts.tsx":
+/*!******************************************!*\
+  !*** ./src/js/contexts/AuthContexts.tsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AuthContext: () => (/* binding */ AuthContext),
+/* harmony export */   AuthProvider: () => (/* binding */ AuthProvider)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var AuthContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
+    isLoggedIn: false,
+    setIsLoggedIn: function () { },
+    userName: "",
+    setUserName: function () { },
+});
+var AuthProvider = function (_a) {
+    var children = _a.children;
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isLoggedIn = _b[0], setIsLoggedIn = _b[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), userName = _c[0], setUserName = _c[1];
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(AuthContext.Provider, { value: { isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn, userName: userName, setUserName: setUserName } }, children));
+};
+
+
+/***/ }),
+
+/***/ "./src/js/hooks/use-Auth.ts":
+/*!**********************************!*\
+  !*** ./src/js/hooks/use-Auth.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useAuth: () => (/* binding */ useAuth)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _contexts_AuthContexts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../contexts/AuthContexts */ "./src/js/contexts/AuthContexts.tsx");
+
+
+var USER_NAME_KEY = "user-name";
+var useAuth = function () {
+    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_contexts_AuthContexts__WEBPACK_IMPORTED_MODULE_1__.AuthContext), isLoggedIn = _a.isLoggedIn, setIsLoggedIn = _a.setIsLoggedIn, userName = _a.userName, setUserName = _a.setUserName;
+    var login = function () {
+        if (userName) {
+            setIsLoggedIn(true);
+            localStorage.setItem(USER_NAME_KEY, userName);
+        }
+    };
+    var logout = function () {
+        setIsLoggedIn(false);
+        setUserName("");
+        localStorage.removeItem(USER_NAME_KEY);
+    };
+    // マウント時にローカルストレージからユーザー名を取得する
+    // ユーザー名が取得できた場合はログイン中として扱う
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        var userNameData = localStorage.getItem(USER_NAME_KEY);
+        if (userNameData) {
+            setUserName(userNameData);
+            setIsLoggedIn(true);
+        }
+    }, []);
+    return { isLoggedIn: isLoggedIn, login: login, logout: logout, userName: userName, setUserName: setUserName };
+};
+
+
+/***/ }),
+
+/***/ "./src/js/hooks/use-timer.ts":
+/*!***********************************!*\
+  !*** ./src/js/hooks/use-timer.ts ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -33709,10 +33765,10 @@ var useTimer = function () {
 
 /***/ }),
 
-/***/ "./src/js/components/todo/use-todo-list.ts":
-/*!*************************************************!*\
-  !*** ./src/js/components/todo/use-todo-list.ts ***!
-  \*************************************************/
+/***/ "./src/js/hooks/use-todo-list.ts":
+/*!***************************************!*\
+  !*** ./src/js/hooks/use-todo-list.ts ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -33763,28 +33819,78 @@ var useTodoList = function () {
 
 /***/ }),
 
-/***/ "./src/js/contexts/AuthContexts.tsx":
-/*!******************************************!*\
-  !*** ./src/js/contexts/AuthContexts.tsx ***!
-  \******************************************/
+/***/ "./src/js/pages/Login.tsx":
+/*!********************************!*\
+  !*** ./src/js/pages/Login.tsx ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AuthContext: () => (/* binding */ AuthContext),
-/* harmony export */   AuthProvider: () => (/* binding */ AuthProvider)
+/* harmony export */   Login: () => (/* binding */ Login)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_parts_heading__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/parts/heading */ "./src/js/components/parts/heading.tsx");
+/* harmony import */ var _components_parts_Textfield__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/parts/Textfield */ "./src/js/components/parts/Textfield.tsx");
+/* harmony import */ var _components_parts_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/parts/Button */ "./src/js/components/parts/Button.tsx");
+/* harmony import */ var _hooks_use_Auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
 
 
-var AuthContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({
-    isLoggedIn: false,
-});
-var AuthProvider = function (_a) {
-    var children = _a.children;
-    var isLoggedIn = true;
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(AuthContext.Provider, { value: { isLoggedIn: isLoggedIn } }, children));
+
+
+
+var Login = function () {
+    var _a = (0,_hooks_use_Auth__WEBPACK_IMPORTED_MODULE_4__.useAuth)(), login = _a.login, userName = _a.userName, setUserName = _a.setUserName;
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", { className: "my-0 mx-auto w-4/5 text-center" },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_heading__WEBPACK_IMPORTED_MODULE_1__.Heading, { level: "h1" }, "\u30ED\u30B0\u30A4\u30F3"),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "flex gap-2" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_Textfield__WEBPACK_IMPORTED_MODULE_2__.TextField, { id: "user-name", label: "\u30E6\u30FC\u30B6\u30FC\u540D", type: "text", value: userName, onChange: setUserName }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_Button__WEBPACK_IMPORTED_MODULE_3__.Button, { onClick: login, color: "blue" }, "\u30ED\u30B0\u30A4\u30F3"))));
+};
+
+
+/***/ }),
+
+/***/ "./src/js/pages/Todo.tsx":
+/*!*******************************!*\
+  !*** ./src/js/pages/Todo.tsx ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Todo: () => (/* binding */ Todo)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_parts_heading__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/parts/heading */ "./src/js/components/parts/heading.tsx");
+/* harmony import */ var _components_parts_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/parts/Button */ "./src/js/components/parts/Button.tsx");
+/* harmony import */ var _components_todo_NewTodoForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/todo/NewTodoForm */ "./src/js/components/todo/NewTodoForm.tsx");
+/* harmony import */ var _components_todo_Todolist__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/todo/Todolist */ "./src/js/components/todo/Todolist.tsx");
+/* harmony import */ var _hooks_use_todo_list__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/use-todo-list */ "./src/js/hooks/use-todo-list.ts");
+/* harmony import */ var _hooks_use_Auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
+
+
+
+
+
+
+
+var Todo = function () {
+    var _a = (0,_hooks_use_todo_list__WEBPACK_IMPORTED_MODULE_5__.useTodoList)(), todoList = _a.todoList, addTodo = _a.addTodo, deleteTodo = _a.deleteTodo;
+    var _b = (0,_hooks_use_Auth__WEBPACK_IMPORTED_MODULE_6__.useAuth)(), logout = _b.logout, userName = _b.userName;
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", { className: "my-0 mx-auto w-4/5 text-center" },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_heading__WEBPACK_IMPORTED_MODULE_1__.Heading, { level: "h1" }, "TODO"),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, userName),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null,
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_Button__WEBPACK_IMPORTED_MODULE_2__.Button, { onClick: logout, color: "red" }, "\u30ED\u30B0\u30A2\u30A6\u30C8")),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "mt-8" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_heading__WEBPACK_IMPORTED_MODULE_1__.Heading, { level: "h2" }, "\u65B0\u898FTODO\u4F5C\u6210"),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_todo_NewTodoForm__WEBPACK_IMPORTED_MODULE_3__.NewTodoForm, { addTodo: addTodo })),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "mt-8" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_heading__WEBPACK_IMPORTED_MODULE_1__.Heading, { level: "h2" }, "TODO\u4E00\u89A7"),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_todo_Todolist__WEBPACK_IMPORTED_MODULE_4__.TodoList, { todoList: todoList, deleteTodo: deleteTodo }))));
 };
 
 

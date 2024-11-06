@@ -525,11 +525,12 @@ video {
 .grid {
   display: grid;
 }
-.w-16 {
-  width: 4rem;
-}
 .w-4\/5 {
   width: 80%;
+}
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -539,6 +540,9 @@ video {
 }
 .gap-1 {
   gap: 0.25rem;
+}
+.gap-2 {
+  gap: 0.5rem;
 }
 .rounded {
   border-radius: 0.25rem;
@@ -563,6 +567,10 @@ video {
 }
 .p-4 {
   padding: 1rem;
+}
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 .text-center {
   text-align: center;
@@ -593,6 +601,10 @@ video {
 }
 .font-bold {
   font-weight: 700;
+}
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
