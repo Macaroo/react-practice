@@ -33607,7 +33607,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var TodoItem = function (_a) {
+
+var TodoItem = (0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (_a) {
     var id = _a.id, task = _a.task, person = _a.person, deadline = _a.deadline, deleteTodo = _a.deleteTodo;
     var userName = (0,_hooks_use_Auth__WEBPACK_IMPORTED_MODULE_3__.useAuth)().userName;
     var style = userName === person ? "text-red-600 font-bold" : "";
@@ -33622,7 +33623,7 @@ var TodoItem = function (_a) {
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null,
                     "\u30BF\u30A4\u30DE\u30FC : ",
                     time)))));
-};
+});
 
 
 /***/ }),
@@ -33810,9 +33811,9 @@ var useTodoList = function () {
             },
         ], false); });
     };
-    var deleteTodo = function (id) {
+    var deleteTodo = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (id) {
         return setTodoList(function (prev) { return prev.filter(function (todo) { return todo.id !== id; }); });
-    };
+    }, []);
     return { todoList: todoList, addTodo: addTodo, deleteTodo: deleteTodo };
 };
 

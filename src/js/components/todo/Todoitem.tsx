@@ -2,6 +2,7 @@ import * as React from "react";
 import { Button } from "../parts/Button";
 import { useTimer } from "../../hooks/use-timer";
 import { useAuth } from "../../hooks/use-Auth";
+import { memo } from "react";
 
 type Props = {
   id: number;
@@ -11,7 +12,8 @@ type Props = {
   deleteTodo: (id: number) => void;
 };
 
-export const TodoItem = ({ id, task, person, deadline, deleteTodo }: Props) => {
+export const TodoItem = memo
+  (({ id, task, person, deadline, deleteTodo }: Props) => {
   const { userName } = useAuth();
   const style = userName === person ? "text-red-600 font-bold" : "";
   const { time } = useTimer();
@@ -30,4 +32,4 @@ export const TodoItem = ({ id, task, person, deadline, deleteTodo }: Props) => {
       </li>
     </ul>
   );
-};
+});
