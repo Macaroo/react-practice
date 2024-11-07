@@ -33790,6 +33790,7 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 var useTodoList = function () {
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), todoList = _a[0], setTodoList = _a[1];
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), filterWord = _b[0], setFilterWord = _b[1];
     // マウント時に、一度だけLocalStorageからtodo一覧のデータを保存する
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         var todoListData = localStorage.getItem("todo-list");
@@ -33814,7 +33815,18 @@ var useTodoList = function () {
     var deleteTodo = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (id) {
         return setTodoList(function (prev) { return prev.filter(function (todo) { return todo.id !== id; }); });
     }, []);
-    return { todoList: todoList, addTodo: addTodo, deleteTodo: deleteTodo };
+    var filteredTodoList = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+        return todoList.filter(function (todo) {
+            return todo.task.includes(filterWord) || todo.person.includes(filterWord);
+        });
+    }, [todoList, filterWord]);
+    return {
+        todoList: filteredTodoList,
+        addTodo: addTodo,
+        deleteTodo: deleteTodo,
+        filterWord: filterWord,
+        setFilterWord: setFilterWord
+    };
 };
 
 
@@ -33871,6 +33883,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_todo_Todolist__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/todo/Todolist */ "./src/js/components/todo/Todolist.tsx");
 /* harmony import */ var _hooks_use_todo_list__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/use-todo-list */ "./src/js/hooks/use-todo-list.ts");
 /* harmony import */ var _hooks_use_Auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
+/* harmony import */ var _components_parts_Textfield__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/parts/Textfield */ "./src/js/components/parts/Textfield.tsx");
+
 
 
 
@@ -33879,7 +33893,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Todo = function () {
-    var _a = (0,_hooks_use_todo_list__WEBPACK_IMPORTED_MODULE_5__.useTodoList)(), todoList = _a.todoList, addTodo = _a.addTodo, deleteTodo = _a.deleteTodo;
+    var _a = (0,_hooks_use_todo_list__WEBPACK_IMPORTED_MODULE_5__.useTodoList)(), todoList = _a.todoList, addTodo = _a.addTodo, deleteTodo = _a.deleteTodo, filterWord = _a.filterWord, setFilterWord = _a.setFilterWord;
     var _b = (0,_hooks_use_Auth__WEBPACK_IMPORTED_MODULE_6__.useAuth)(), logout = _b.logout, userName = _b.userName;
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", { className: "my-0 mx-auto w-4/5 text-center" },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_heading__WEBPACK_IMPORTED_MODULE_1__.Heading, { level: "h1" }, "TODO"),
@@ -33891,6 +33905,8 @@ var Todo = function () {
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_todo_NewTodoForm__WEBPACK_IMPORTED_MODULE_3__.NewTodoForm, { addTodo: addTodo })),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "mt-8" },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_heading__WEBPACK_IMPORTED_MODULE_1__.Heading, { level: "h2" }, "TODO\u4E00\u89A7"),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "mt-8" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_parts_Textfield__WEBPACK_IMPORTED_MODULE_7__.TextField, { label: "\u7D5E\u8FBC\u307F", id: "filter-word", value: filterWord, onChange: setFilterWord, type: "text" })),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_todo_Todolist__WEBPACK_IMPORTED_MODULE_4__.TodoList, { todoList: todoList, deleteTodo: deleteTodo }))));
 };
 
