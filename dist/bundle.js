@@ -29983,7 +29983,7 @@ __webpack_require__.r(__webpack_exports__);
     if(true) {
       (function() {
         var localsJsonString = undefined;
-        // 1731632938365
+        // 1731645710057
         var cssReload = __webpack_require__(/*! ../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {});
         // only invalidate when locals change
         if (
@@ -71761,23 +71761,23 @@ var useTodoList = function () {
             setTodoList(JSON.parse(todoListData));
         }
     }, []); // 依存配列
-    // todoListが更新されるたびに、LocalStorageにデータを保存する
-    (0, react_1.useEffect)(function () {
-        localStorage.setItem("todo-list", JSON.stringify(todoList));
-    }, [todoList]); // 依存配列
     var addTodo = function (newTask, newPerson, newDeadline) {
-        return setTodoList(function (prev) { return __spreadArray(__spreadArray([], prev, true), [
+        var updatedTodoList = __spreadArray(__spreadArray([], todoList, true), [
             {
                 id: Date.now(),
                 task: newTask,
                 person: newPerson,
                 deadline: newDeadline,
             },
-        ], false); });
+        ], false);
+        localStorage.setItem("todo-list", JSON.stringify(updatedTodoList));
+        setTodoList(updatedTodoList);
     };
-    var deleteTodo = (0, react_1.useCallback)(function (id) {
-        return setTodoList(function (prev) { return prev.filter(function (todo) { return todo.id !== id; }); });
-    }, []);
+    var deleteTodo = function (id) {
+        var updatedTodoList = todoList.filter(function (todo) { return todo.id !== id; });
+        localStorage.setItem("todo-list", JSON.stringify(updatedTodoList));
+        setTodoList(updatedTodoList);
+    };
     var filteredTodoList = (0, react_1.useMemo)(function () {
         return todoList.filter(function (todo) {
             return todo.task.includes(filterWord) || todo.person.includes(filterWord);
@@ -106600,7 +106600,7 @@ function __disposeResources(env) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("e3b4386c5afb0d1e8eaa")
+/******/ 		__webpack_require__.h = () => ("2219528b118326fe7abc")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
