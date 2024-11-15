@@ -6,10 +6,21 @@ import { TodoList } from "../components/todo/Todolist";
 import { useTodoList } from "../hooks/use-todo-list";
 import { useAuth } from "../hooks/use-Auth";
 import { TextField } from "../components/parts/Textfield";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Todo = () => {
   const { todoList, addTodo, deleteTodo, filterWord, setFilterWord } = useTodoList();
-  const { logout, userName } = useAuth();
+  const { isLoggedIn, logout, userName } = useAuth();
+  const navigate = useNavigate();
+
+  // ログアウト中にアクセスされたら、/loginに遷移させる
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+  }, [isLoggedIn]);
+
   return (
     <main className="my-0 mx-auto w-4/5 text-center">
       <Heading level="h1">TODO</Heading>
