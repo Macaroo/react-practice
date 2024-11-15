@@ -29983,7 +29983,7 @@ __webpack_require__.r(__webpack_exports__);
     if(true) {
       (function() {
         var localsJsonString = undefined;
-        // 1731651730397
+        // 1731680627443
         var cssReload = __webpack_require__(/*! ../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {});
         // only invalidate when locals change
         if (
@@ -71345,11 +71345,62 @@ var NewTodoForm = function (_a) {
     return (React.createElement(react_2.HStack, { spacing: "4" },
         React.createElement(react_2.Input, { placeholder: "\u30BF\u30B9\u30AF\u540D", value: newTask, onChange: function (e) { return setNewTask(e.target.value); } }),
         React.createElement(react_2.Input, { placeholder: "\u62C5\u5F53\u8005\u540D", value: newPerson, onChange: function (e) { return setNewPerson(e.target.value); } }),
-        React.createElement(react_2.Input, { placeholder: "\u7DE0\u5207", value: newDeadline, onChange: function (e) { return setNewDeadline(e.target.value); } }),
+        React.createElement(react_2.Input, { placeholder: "\u7DE0\u5207", value: newDeadline, onChange: function (e) { return setNewDeadline(e.target.value); }, type: "date" }),
         React.createElement(react_2.Box, null,
             React.createElement(react_2.Button, { onClick: addNewTodo, colorScheme: "blue" }, "\u8FFD\u52A0"))));
 };
 exports.NewTodoForm = NewTodoForm;
+
+
+/***/ }),
+
+/***/ "./src/js/components/todo/TodoTable.tsx":
+/*!**********************************************!*\
+  !*** ./src/js/components/todo/TodoTable.tsx ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TodoTable = void 0;
+var react_1 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
+var react_2 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var Todoitem_1 = __webpack_require__(/*! ./Todoitem */ "./src/js/components/todo/Todoitem.tsx");
+exports.TodoTable = (0, react_2.memo)(function (_a) {
+    var todoList = _a.todoList, deleteTodo = _a.deleteTodo;
+    return (react_2.default.createElement(react_1.TableContainer, null,
+        react_2.default.createElement(react_1.Table, { variant: 'simple' },
+            react_2.default.createElement(react_1.Thead, null,
+                react_2.default.createElement(react_1.Tr, null,
+                    react_2.default.createElement(react_1.Th, null, "\u30BF\u30B9\u30AF\u540D"),
+                    react_2.default.createElement(react_1.Th, null, "\u62C5\u5F53\u8005\u540D"),
+                    react_2.default.createElement(react_1.Th, null, "\u7DE0\u5207"))),
+            react_2.default.createElement(react_1.Tbody, null, todoList.map(function (todo) { return (react_2.default.createElement(Todoitem_1.TodoItem, { key: todo.id, id: todo.id, task: todo.task, person: todo.person, deadline: todo.deadline, deleteTodo: function () { return deleteTodo(todo.id); } })); })))));
+});
 
 
 /***/ }),
@@ -71388,80 +71439,19 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.TodoItem = void 0;
 var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var use_timer_1 = __webpack_require__(/*! ../../hooks/use-timer */ "./src/js/hooks/use-timer.ts");
 var use_Auth_1 = __webpack_require__(/*! ../../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_2 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
 exports.TodoItem = (0, react_1.memo)(function (_a) {
     var id = _a.id, task = _a.task, person = _a.person, deadline = _a.deadline, deleteTodo = _a.deleteTodo;
     var userName = (0, use_Auth_1.useAuth)().userName;
-    var style = userName === person ? "text-red-600 font-bold" : "";
-    var time = (0, use_timer_1.useTimer)().time;
-    return (React.createElement("ul", null,
-        React.createElement("li", { className: "grid grid-cols-4" },
-            React.createElement("div", null, task),
-            React.createElement("div", { className: style }, person),
-            React.createElement("div", null, deadline),
-            React.createElement("div", null,
-                React.createElement(react_2.Button, { onClick: function () { return deleteTodo(id); }, colorScheme: "red", size: "xs" }, "\u524A\u9664"),
-                React.createElement("div", null,
-                    "\u30BF\u30A4\u30DE\u30FC : ",
-                    time)))));
+    return (React.createElement(react_2.Tr, { color: userName === person ? "red" : "" },
+        React.createElement(react_2.Td, null, task),
+        React.createElement(react_2.Td, null, person),
+        React.createElement(react_2.Td, null, deadline),
+        React.createElement(react_2.Td, null,
+            React.createElement(react_2.Button, { onClick: function () { return deleteTodo(id); }, colorScheme: "red", size: "xs" }, "\u524A\u9664"))));
 });
-
-
-/***/ }),
-
-/***/ "./src/js/components/todo/Todolist.tsx":
-/*!*********************************************!*\
-  !*** ./src/js/components/todo/Todolist.tsx ***!
-  \*********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TodoList = void 0;
-var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var Todoitem_1 = __webpack_require__(/*! ./Todoitem */ "./src/js/components/todo/Todoitem.tsx");
-var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var AuthContexts_1 = __webpack_require__(/*! ../../contexts/AuthContexts */ "./src/js/contexts/AuthContexts.tsx");
-var TodoList = function (_a) {
-    var todoList = _a.todoList, deleteTodo = _a.deleteTodo;
-    var isLoggedIn = (0, react_1.useContext)(AuthContexts_1.AuthContext).isLoggedIn;
-    return (React.createElement(React.Fragment, null,
-        React.createElement("ul", { className: "mt-4 ml-4 bg-emerald-100 p-4 rounded" },
-            React.createElement("li", { className: "grid grid-cols-4 font-bold" },
-                React.createElement("div", null, "\u30BF\u30B9\u30AF\u540D"),
-                React.createElement("div", null, "\u62C5\u5F53\u8005\u540D"),
-                React.createElement("div", null, "\u7DE0\u5207"),
-                React.createElement("div", null, "\u524A\u9664")),
-            todoList.map(function (todo) { return (React.createElement(Todoitem_1.TodoItem, { key: todo.id, id: todo.id, task: todo.task, person: todo.person, deadline: todo.deadline, deleteTodo: deleteTodo })); }))));
-};
-exports.TodoList = TodoList;
 
 
 /***/ }),
@@ -71556,34 +71546,6 @@ var useAuth = function () {
     return { isLoggedIn: isLoggedIn, login: login, logout: logout, userName: userName, setUserName: setUserName };
 };
 exports.useAuth = useAuth;
-
-
-/***/ }),
-
-/***/ "./src/js/hooks/use-timer.ts":
-/*!***********************************!*\
-  !*** ./src/js/hooks/use-timer.ts ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.useTimer = void 0;
-var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var useTimer = function () {
-    var _a = (0, react_1.useState)(0), time = _a[0], setTime = _a[1];
-    (0, react_1.useEffect)(function () {
-        var id = setInterval(function () {
-            return setTime(function (prevTime) { return prevTime + 1; });
-        }, 1000);
-        return function () {
-            clearInterval(id);
-        };
-    }, []);
-    return { time: time };
-};
-exports.useTimer = useTimer;
 
 
 /***/ }),
@@ -71746,10 +71708,10 @@ var Login = function () {
             navigate("/todo");
         }
     }, [isLoggedIn]);
-    return (React.createElement("main", { className: "my-0 mx-auto w-4/5 text-center" },
-        React.createElement(react_2.Heading, { as: "h1", size: "2xl" }, "\u30ED\u30B0\u30A4\u30F3"),
-        React.createElement("div", { className: "flex gap-2" },
-            React.createElement(react_2.Input, { placeholder: "\u30E6\u30FC\u30B6\u30FC\u540D", value: userName, onChange: function (e) { return setUserName(e.target.value); } }),
+    return (React.createElement(react_2.Box, { as: "main", w: 400, mx: "auto", mt: "20" },
+        React.createElement(react_2.Heading, { as: "h1", size: "xl" }, "\u30ED\u30B0\u30A4\u30F3"),
+        React.createElement(react_2.HStack, { spacing: 4, mt: 10 },
+            React.createElement(react_2.Input, { placeholder: "\u30E6\u30FC\u30B6\u30FC\u540D", value: userName, onChange: function (e) { return setUserName(e.target.value); }, w: "40" }),
             React.createElement(react_2.Button, { colorScheme: "blue", onClick: login }, "\u30ED\u30B0\u30A4\u30F3"))));
 };
 exports.Login = Login;
@@ -71792,12 +71754,12 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Todo = void 0;
 var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var NewTodoForm_1 = __webpack_require__(/*! ../components/todo/NewTodoForm */ "./src/js/components/todo/NewTodoForm.tsx");
-var Todolist_1 = __webpack_require__(/*! ../components/todo/Todolist */ "./src/js/components/todo/Todolist.tsx");
 var use_todo_list_1 = __webpack_require__(/*! ../hooks/use-todo-list */ "./src/js/hooks/use-todo-list.ts");
 var use_Auth_1 = __webpack_require__(/*! ../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_2 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
+var TodoTable_1 = __webpack_require__(/*! ../components/todo/TodoTable */ "./src/js/components/todo/TodoTable.tsx");
 var Todo = function () {
     var _a = (0, use_todo_list_1.useTodoList)(), todoList = _a.todoList, addTodo = _a.addTodo, deleteTodo = _a.deleteTodo, filterWord = _a.filterWord, setFilterWord = _a.setFilterWord;
     var _b = (0, use_Auth_1.useAuth)(), isLoggedIn = _b.isLoggedIn, logout = _b.logout, userName = _b.userName;
@@ -71822,9 +71784,10 @@ var Todo = function () {
             React.createElement(NewTodoForm_1.NewTodoForm, { addTodo: addTodo })),
         React.createElement(react_2.Box, { mt: "20", as: "section" },
             React.createElement(react_2.Heading, { as: "h2", size: "xl" }, "TODO\u4E00\u89A7"),
-            React.createElement(react_2.Box, { mt: "20" },
-                React.createElement(react_2.Input, { placeholder: "\u7D5E\u8FBC\u307F", value: filterWord, onChange: function (e) { return setFilterWord(e.target.value); } })),
-            React.createElement(Todolist_1.TodoList, { todoList: todoList, deleteTodo: deleteTodo }))));
+            React.createElement(react_2.Box, { mt: "10" },
+                React.createElement(react_2.Input, { placeholder: "\u7D5E\u8FBC\u307F", value: filterWord, onChange: function (e) { return setFilterWord(e.target.value); }, w: "40" }))),
+        React.createElement(react_2.Box, { mt: "10", as: "section" },
+            React.createElement(TodoTable_1.TodoTable, { todoList: todoList, deleteTodo: deleteTodo }))));
 };
 exports.Todo = Todo;
 
@@ -106457,7 +106420,7 @@ function __disposeResources(env) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("fef923439c14273c30c5")
+/******/ 		__webpack_require__.h = () => ("11d778f04575c776f570")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

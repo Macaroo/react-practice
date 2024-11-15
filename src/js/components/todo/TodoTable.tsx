@@ -1,44 +1,38 @@
 import { Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
-import React from "react"
+import React, { memo } from "react"
+import { Todo } from "../../types/todo";
+import { TodoItem } from "./Todoitem";
 
 
-export const TodoTable = () => {
+type Props = {
+    todoList: Todo[];
+    deleteTodo: (id: number) => void;
+};
+
+export const TodoTable =  memo(({ todoList, deleteTodo }: Props) => {
     return (
         <TableContainer>
             <Table variant='simple'>
-                <TableCaption>Imperial to metric conversion factors</TableCaption>
                 <Thead>
                 <Tr>
-                    <Th>To convert</Th>
-                    <Th>into</Th>
-                    <Th isNumeric>multiply by</Th>
+                    <Th>タスク名</Th>
+                    <Th>担当者名</Th>
+                    <Th>締切</Th>
                 </Tr>
                 </Thead>
                 <Tbody>
-                <Tr>
-                    <Td>inches</Td>
-                    <Td>millimetres (mm)</Td>
-                    <Td isNumeric>25.4</Td>
-                </Tr>
-                <Tr>
-                    <Td>feet</Td>
-                    <Td>centimetres (cm)</Td>
-                    <Td isNumeric>30.48</Td>
-                </Tr>
-                <Tr>
-                    <Td>yards</Td>
-                    <Td>metres (m)</Td>
-                    <Td isNumeric>0.91444</Td>
-                </Tr>
+                    {todoList.map((todo) => (
+                        <TodoItem
+                            key={todo.id}
+                            id={todo.id}
+                            task={todo.task}
+                            person={todo.person}
+                            deadline={todo.deadline}
+                            deleteTodo={() => deleteTodo(todo.id)}
+                        />
+                    ))}
                 </Tbody>
-                <Tfoot>
-                <Tr>
-                    <Th>To convert</Th>
-                    <Th>into</Th>
-                    <Th isNumeric>multiply by</Th>
-                </Tr>
-                </Tfoot>
             </Table>
         </TableContainer>
-    )
-}
+    );
+});

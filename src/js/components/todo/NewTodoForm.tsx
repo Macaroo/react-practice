@@ -34,6 +34,7 @@ export const NewTodoForm = ({ addTodo }: Props) => {
                 placeholder="締切"
                 value={newDeadline}
                 onChange={(e) => setNewDeadline(e.target.value)}
+                type="date"
             />
             <Box>
                 <Button onClick={addNewTodo} colorScheme="blue">追加</Button>

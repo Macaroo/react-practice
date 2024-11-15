@@ -1,11 +1,11 @@
 import * as React from "react";
 import { NewTodoForm } from "../components/todo/NewTodoForm";
-import { TodoList } from "../components/todo/Todolist";
 import { useTodoList } from "../hooks/use-todo-list";
 import { useAuth } from "../hooks/use-Auth";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Avatar, Box, Button, Heading, HStack, Input } from "@chakra-ui/react";
+import { TodoTable } from "../components/todo/TodoTable";
 
 export const Todo = () => {
   const { todoList, addTodo, deleteTodo, filterWord, setFilterWord } = useTodoList();
@@ -41,14 +41,21 @@ export const Todo = () => {
       </Box>
       <Box mt="20" as="section">
         <Heading as="h2" size="xl">TODO一覧</Heading>
-        <Box mt="20">
+        <Box mt="10">
           <Input
             placeholder="絞込み"
             value={filterWord}
             onChange={(e) => setFilterWord(e.target.value)}
+            w="40"
           />
         </Box>
-        <TodoList todoList={todoList} deleteTodo={deleteTodo} />
+        {/* <TodoList todoList={todoList} deleteTodo={deleteTodo} /> */}
+      </Box>
+      <Box mt="10" as="section">
+        <TodoTable
+          todoList={todoList}
+          deleteTodo={deleteTodo}
+        />
       </Box>
     </Box>
   );
