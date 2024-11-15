@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Button } from "../parts/Button";
 import { useTimer } from "../../hooks/use-timer";
 import { useAuth } from "../../hooks/use-Auth";
 import { memo } from "react";
+import { Button } from "@chakra-ui/react";
 
 type Props = {
   id: number;
@@ -24,7 +24,7 @@ export const TodoItem = memo
         <div className={style}>{person}</div>
         <div>{deadline}</div>
         <div>
-          <Button onClick={() => deleteTodo(id)} color="red">
+          <Button onClick={() => deleteTodo(id)} colorScheme="red" size="xs">
             削除
           </Button>
           <div>タイマー : {time}</div>

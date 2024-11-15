@@ -1,10 +1,8 @@
 import * as React from "react";
-import { Heading } from "../components/parts/heading";
-import { TextField } from "../components/parts/Textfield";
-import { Button } from "../components/parts/Button";
 import { useAuth } from "../hooks/use-Auth";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button, Heading, Input } from "@chakra-ui/react";
 
 export const Login = () => {
   const { isLoggedIn, login, userName, setUserName } = useAuth();
@@ -19,16 +17,14 @@ export const Login = () => {
 
   return (
     <main className="my-0 mx-auto w-4/5 text-center">
-      <Heading level="h1">ログイン</Heading>
+      <Heading as="h1" size="2xl">ログイン</Heading>
       <div className="flex gap-2">
-        <TextField
-          id="user-name"
-          label="ユーザー名"
-          type="text"
+        <Input
+          placeholder="ユーザー名"
           value={userName}
-          onChange={setUserName}
+          onChange={(e) => setUserName(e.target.value)}
         />
-        <Button onClick={login} color="blue">
+        <Button colorScheme="blue" onClick={login}>
           ログイン
         </Button>
       </div>

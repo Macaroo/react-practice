@@ -1,13 +1,11 @@
 import * as React from "react";
-import { Heading } from "../components/parts/heading";
-import { Button } from "../components/parts/Button";
 import { NewTodoForm } from "../components/todo/NewTodoForm";
 import { TodoList } from "../components/todo/Todolist";
 import { useTodoList } from "../hooks/use-todo-list";
 import { useAuth } from "../hooks/use-Auth";
-import { TextField } from "../components/parts/Textfield";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Avatar, Box, Button, Heading, HStack, Input } from "@chakra-ui/react";
 
 export const Todo = () => {
   const { todoList, addTodo, deleteTodo, filterWord, setFilterWord } = useTodoList();
@@ -22,30 +20,36 @@ export const Todo = () => {
   }, [isLoggedIn]);
 
   return (
-    <main className="my-0 mx-auto w-4/5 text-center">
-      <Heading level="h1">TODO</Heading>
-      <div>{userName}</div>
-      <div>
-        <Button onClick={logout} color="red">
-          ログアウト
-        </Button>
-      </div>
-      <div className="mt-8">
-        <Heading level="h2">新規TODO作成</Heading>
+    <Box as="main" w="720px" mx="auto" mt="20">
+      <HStack as="header" justifyContent="space-between" spacing="4">
+        <Heading as="h1" size="2xl">TODO</Heading>
+        <HStack justifyContent="end">
+          <HStack spacing="2">
+            <Avatar bg='teal.500' size="xs" />
+            <Box>{userName}</Box>
+          </HStack>
+          <Box>
+            <Button onClick={logout} colorScheme="red" size="xs">
+              ログアウト
+            </Button>
+          </Box>
+        </HStack>
+      </HStack>
+      <Box mt="20" as="section">
+        <Heading as="h2" size="xl">新規TODO作成</Heading>
         <NewTodoForm addTodo={addTodo} />
-      </div>
-      <div className="mt-8">
-        <Heading level="h2">TODO一覧</Heading>
-        <div className="mt-8">
-          <TextField label="絞込み"
-          id={"filter-word"}
-          value={filterWord}
-          onChange={setFilterWord}
-          type={"text"}
+      </Box>
+      <Box mt="20" as="section">
+        <Heading as="h2" size="xl">TODO一覧</Heading>
+        <Box mt="20">
+          <Input
+            placeholder="絞込み"
+            value={filterWord}
+            onChange={(e) => setFilterWord(e.target.value)}
           />
-        </div>
+        </Box>
         <TodoList todoList={todoList} deleteTodo={deleteTodo} />
-      </div>
-    </main>
+      </Box>
+    </Box>
   );
 };

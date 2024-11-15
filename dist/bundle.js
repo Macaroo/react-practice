@@ -29983,7 +29983,7 @@ __webpack_require__.r(__webpack_exports__);
     if(true) {
       (function() {
         var localsJsonString = undefined;
-        // 1731645710057
+        // 1731651730397
         var cssReload = __webpack_require__(/*! ../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {});
         // only invalidate when locals change
         if (
@@ -71295,149 +71295,6 @@ exports.App = App;
 
 /***/ }),
 
-/***/ "./src/js/components/parts/Button.tsx":
-/*!********************************************!*\
-  !*** ./src/js/components/parts/Button.tsx ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Button = void 0;
-var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var Button = function (_a) {
-    var onClick = _a.onClick, color = _a.color, children = _a.children;
-    var style = color === "red" ? "bg-red-400" : "bg-cyan-400";
-    return (React.createElement("button", { className: "border w-fit px-1 rounded ".concat(style), onClick: onClick }, children));
-};
-exports.Button = Button;
-
-
-/***/ }),
-
-/***/ "./src/js/components/parts/Textfield.tsx":
-/*!***********************************************!*\
-  !*** ./src/js/components/parts/Textfield.tsx ***!
-  \***********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TextField = void 0;
-var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var TextField = function (_a) {
-    var id = _a.id, label = _a.label, value = _a.value, onChange = _a.onChange, type = _a.type;
-    return (React.createElement("div", { className: "flex gap-1 items-center" },
-        React.createElement("label", { htmlFor: id }, label),
-        React.createElement("input", { id: id, type: type, value: value, onChange: function (e) { return onChange(e.target.value); }, className: "border rounded p-1" })));
-};
-exports.TextField = TextField;
-
-
-/***/ }),
-
-/***/ "./src/js/components/parts/heading.tsx":
-/*!*********************************************!*\
-  !*** ./src/js/components/parts/heading.tsx ***!
-  \*********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Heading = void 0;
-var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var Heading = function (_a) {
-    var level = _a.level, children = _a.children;
-    if (level === "h1")
-        return React.createElement("h1", { className: "font-bold text-5xl" }, children);
-    if (level === "h2")
-        return React.createElement("h2", { className: "font-bold text-4xl" }, children);
-    if (level === "h3")
-        return React.createElement("h3", { className: "font-bold text-3xl" }, children);
-    if (level === "h4")
-        return React.createElement("h4", { className: "font-bold text-2xl" }, children);
-    if (level === "h5")
-        return React.createElement("h5", { className: "font-bold text-xl" }, children);
-    if (level === "h6")
-        return React.createElement("h6", { className: "font-bold text-lg" }, children);
-};
-exports.Heading = Heading;
-
-
-/***/ }),
-
 /***/ "./src/js/components/todo/NewTodoForm.tsx":
 /*!************************************************!*\
   !*** ./src/js/components/todo/NewTodoForm.tsx ***!
@@ -71472,9 +71329,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NewTodoForm = void 0;
 var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var Textfield_1 = __webpack_require__(/*! ../parts/Textfield */ "./src/js/components/parts/Textfield.tsx");
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var Button_1 = __webpack_require__(/*! ../parts/Button */ "./src/js/components/parts/Button.tsx");
+var react_2 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
 var NewTodoForm = function (_a) {
     var addTodo = _a.addTodo;
     var _b = (0, react_1.useState)(""), newTask = _b[0], setNewTask = _b[1];
@@ -71486,11 +71342,12 @@ var NewTodoForm = function (_a) {
         setNewPerson("");
         setNewDeadline("");
     };
-    return (React.createElement("div", { className: "flex gap-1" },
-        React.createElement(Textfield_1.TextField, { id: "new-task", label: "\u30BF\u30B9\u30AF\u540D", type: "text", value: newTask, onChange: setNewTask }),
-        React.createElement(Textfield_1.TextField, { id: "new-person", label: "\u62C5\u5F53\u8005\u540D", type: "text", value: newPerson, onChange: setNewPerson }),
-        React.createElement(Textfield_1.TextField, { id: "new-deadline", label: "\u7DE0\u5207", type: "date", value: newDeadline, onChange: setNewDeadline }),
-        React.createElement(Button_1.Button, { onClick: addNewTodo, color: "blue" }, "\u8FFD\u52A0")));
+    return (React.createElement(react_2.HStack, { spacing: "4" },
+        React.createElement(react_2.Input, { placeholder: "\u30BF\u30B9\u30AF\u540D", value: newTask, onChange: function (e) { return setNewTask(e.target.value); } }),
+        React.createElement(react_2.Input, { placeholder: "\u62C5\u5F53\u8005\u540D", value: newPerson, onChange: function (e) { return setNewPerson(e.target.value); } }),
+        React.createElement(react_2.Input, { placeholder: "\u7DE0\u5207", value: newDeadline, onChange: function (e) { return setNewDeadline(e.target.value); } }),
+        React.createElement(react_2.Box, null,
+            React.createElement(react_2.Button, { onClick: addNewTodo, colorScheme: "blue" }, "\u8FFD\u52A0"))));
 };
 exports.NewTodoForm = NewTodoForm;
 
@@ -71531,10 +71388,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.TodoItem = void 0;
 var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var Button_1 = __webpack_require__(/*! ../parts/Button */ "./src/js/components/parts/Button.tsx");
 var use_timer_1 = __webpack_require__(/*! ../../hooks/use-timer */ "./src/js/hooks/use-timer.ts");
 var use_Auth_1 = __webpack_require__(/*! ../../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_2 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
 exports.TodoItem = (0, react_1.memo)(function (_a) {
     var id = _a.id, task = _a.task, person = _a.person, deadline = _a.deadline, deleteTodo = _a.deleteTodo;
     var userName = (0, use_Auth_1.useAuth)().userName;
@@ -71546,7 +71403,7 @@ exports.TodoItem = (0, react_1.memo)(function (_a) {
             React.createElement("div", { className: style }, person),
             React.createElement("div", null, deadline),
             React.createElement("div", null,
-                React.createElement(Button_1.Button, { onClick: function () { return deleteTodo(id); }, color: "red" }, "\u524A\u9664"),
+                React.createElement(react_2.Button, { onClick: function () { return deleteTodo(id); }, colorScheme: "red", size: "xs" }, "\u524A\u9664"),
                 React.createElement("div", null,
                     "\u30BF\u30A4\u30DE\u30FC : ",
                     time)))));
@@ -71876,12 +71733,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Login = void 0;
 var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var heading_1 = __webpack_require__(/*! ../components/parts/heading */ "./src/js/components/parts/heading.tsx");
-var Textfield_1 = __webpack_require__(/*! ../components/parts/Textfield */ "./src/js/components/parts/Textfield.tsx");
-var Button_1 = __webpack_require__(/*! ../components/parts/Button */ "./src/js/components/parts/Button.tsx");
 var use_Auth_1 = __webpack_require__(/*! ../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+var react_2 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
 var Login = function () {
     var _a = (0, use_Auth_1.useAuth)(), isLoggedIn = _a.isLoggedIn, login = _a.login, userName = _a.userName, setUserName = _a.setUserName;
     var navigate = (0, react_router_dom_1.useNavigate)();
@@ -71892,10 +71747,10 @@ var Login = function () {
         }
     }, [isLoggedIn]);
     return (React.createElement("main", { className: "my-0 mx-auto w-4/5 text-center" },
-        React.createElement(heading_1.Heading, { level: "h1" }, "\u30ED\u30B0\u30A4\u30F3"),
+        React.createElement(react_2.Heading, { as: "h1", size: "2xl" }, "\u30ED\u30B0\u30A4\u30F3"),
         React.createElement("div", { className: "flex gap-2" },
-            React.createElement(Textfield_1.TextField, { id: "user-name", label: "\u30E6\u30FC\u30B6\u30FC\u540D", type: "text", value: userName, onChange: setUserName }),
-            React.createElement(Button_1.Button, { onClick: login, color: "blue" }, "\u30ED\u30B0\u30A4\u30F3"))));
+            React.createElement(react_2.Input, { placeholder: "\u30E6\u30FC\u30B6\u30FC\u540D", value: userName, onChange: function (e) { return setUserName(e.target.value); } }),
+            React.createElement(react_2.Button, { colorScheme: "blue", onClick: login }, "\u30ED\u30B0\u30A4\u30F3"))));
 };
 exports.Login = Login;
 
@@ -71936,15 +71791,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Todo = void 0;
 var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-var heading_1 = __webpack_require__(/*! ../components/parts/heading */ "./src/js/components/parts/heading.tsx");
-var Button_1 = __webpack_require__(/*! ../components/parts/Button */ "./src/js/components/parts/Button.tsx");
 var NewTodoForm_1 = __webpack_require__(/*! ../components/todo/NewTodoForm */ "./src/js/components/todo/NewTodoForm.tsx");
 var Todolist_1 = __webpack_require__(/*! ../components/todo/Todolist */ "./src/js/components/todo/Todolist.tsx");
 var use_todo_list_1 = __webpack_require__(/*! ../hooks/use-todo-list */ "./src/js/hooks/use-todo-list.ts");
 var use_Auth_1 = __webpack_require__(/*! ../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
-var Textfield_1 = __webpack_require__(/*! ../components/parts/Textfield */ "./src/js/components/parts/Textfield.tsx");
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_2 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
 var Todo = function () {
     var _a = (0, use_todo_list_1.useTodoList)(), todoList = _a.todoList, addTodo = _a.addTodo, deleteTodo = _a.deleteTodo, filterWord = _a.filterWord, setFilterWord = _a.setFilterWord;
     var _b = (0, use_Auth_1.useAuth)(), isLoggedIn = _b.isLoggedIn, logout = _b.logout, userName = _b.userName;
@@ -71955,18 +71808,22 @@ var Todo = function () {
             navigate("/login");
         }
     }, [isLoggedIn]);
-    return (React.createElement("main", { className: "my-0 mx-auto w-4/5 text-center" },
-        React.createElement(heading_1.Heading, { level: "h1" }, "TODO"),
-        React.createElement("div", null, userName),
-        React.createElement("div", null,
-            React.createElement(Button_1.Button, { onClick: logout, color: "red" }, "\u30ED\u30B0\u30A2\u30A6\u30C8")),
-        React.createElement("div", { className: "mt-8" },
-            React.createElement(heading_1.Heading, { level: "h2" }, "\u65B0\u898FTODO\u4F5C\u6210"),
+    return (React.createElement(react_2.Box, { as: "main", w: "720px", mx: "auto", mt: "20" },
+        React.createElement(react_2.HStack, { as: "header", justifyContent: "space-between", spacing: "4" },
+            React.createElement(react_2.Heading, { as: "h1", size: "2xl" }, "TODO"),
+            React.createElement(react_2.HStack, { justifyContent: "end" },
+                React.createElement(react_2.HStack, { spacing: "2" },
+                    React.createElement(react_2.Avatar, { bg: 'teal.500', size: "xs" }),
+                    React.createElement(react_2.Box, null, userName)),
+                React.createElement(react_2.Box, null,
+                    React.createElement(react_2.Button, { onClick: logout, colorScheme: "red", size: "xs" }, "\u30ED\u30B0\u30A2\u30A6\u30C8")))),
+        React.createElement(react_2.Box, { mt: "20", as: "section" },
+            React.createElement(react_2.Heading, { as: "h2", size: "xl" }, "\u65B0\u898FTODO\u4F5C\u6210"),
             React.createElement(NewTodoForm_1.NewTodoForm, { addTodo: addTodo })),
-        React.createElement("div", { className: "mt-8" },
-            React.createElement(heading_1.Heading, { level: "h2" }, "TODO\u4E00\u89A7"),
-            React.createElement("div", { className: "mt-8" },
-                React.createElement(Textfield_1.TextField, { label: "\u7D5E\u8FBC\u307F", id: "filter-word", value: filterWord, onChange: setFilterWord, type: "text" })),
+        React.createElement(react_2.Box, { mt: "20", as: "section" },
+            React.createElement(react_2.Heading, { as: "h2", size: "xl" }, "TODO\u4E00\u89A7"),
+            React.createElement(react_2.Box, { mt: "20" },
+                React.createElement(react_2.Input, { placeholder: "\u7D5E\u8FBC\u307F", value: filterWord, onChange: function (e) { return setFilterWord(e.target.value); } })),
             React.createElement(Todolist_1.TodoList, { todoList: todoList, deleteTodo: deleteTodo }))));
 };
 exports.Todo = Todo;
@@ -106600,7 +106457,7 @@ function __disposeResources(env) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("2219528b118326fe7abc")
+/******/ 		__webpack_require__.h = () => ("fef923439c14273c30c5")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
