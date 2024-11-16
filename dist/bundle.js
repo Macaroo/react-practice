@@ -29983,7 +29983,7 @@ __webpack_require__.r(__webpack_exports__);
     if(true) {
       (function() {
         var localsJsonString = undefined;
-        // 1731764205644
+        // 1731766759318
         var cssReload = __webpack_require__(/*! ../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {});
         // only invalidate when locals change
         if (
@@ -71297,6 +71297,69 @@ exports.App = App;
 
 /***/ }),
 
+/***/ "./src/js/components/layout/layout.tsx":
+/*!*********************************************!*\
+  !*** ./src/js/components/layout/layout.tsx ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Layout = void 0;
+var react_1 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
+var react_2 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var use_Auth_1 = __webpack_require__(/*! ../../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+var Layout = function (_a) {
+    var title = _a.title, children = _a.children;
+    var _b = (0, use_Auth_1.useAuth)(), isLoggedIn = _b.isLoggedIn, logout = _b.logout, userName = _b.userName;
+    var navigate = (0, react_router_dom_1.useNavigate)();
+    // ログアウト中にアクセスされたら、/loginに遷移させる
+    (0, react_2.useEffect)(function () {
+        if (!isLoggedIn) {
+            navigate("/login");
+        }
+    }, [isLoggedIn]);
+    return (react_2.default.createElement(react_1.Box, { as: "main", w: "720px", mx: "auto", mt: "20" },
+        react_2.default.createElement(react_1.HStack, { as: "header", justifyContent: "space-between", spacing: "4" },
+            react_2.default.createElement(react_1.Heading, { as: "h1", size: "2xl" }, title),
+            react_2.default.createElement(react_1.HStack, { justifyContent: "end" },
+                react_2.default.createElement(react_1.HStack, { spacing: "2" },
+                    react_2.default.createElement(react_1.Avatar, { bg: 'teal.500', size: "xs" }),
+                    react_2.default.createElement(react_1.Box, null, userName)),
+                react_2.default.createElement(react_1.Box, null,
+                    react_2.default.createElement(react_1.Button, { onClick: logout, colorScheme: "red", size: "xs" }, "\u30ED\u30B0\u30A2\u30A6\u30C8")))),
+        children));
+};
+exports.Layout = Layout;
+
+
+/***/ }),
+
 /***/ "./src/js/components/todo/NewTodoForm.tsx":
 /*!************************************************!*\
   !*** ./src/js/components/todo/NewTodoForm.tsx ***!
@@ -71762,38 +71825,20 @@ exports.Todo = void 0;
 var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var NewTodoForm_1 = __webpack_require__(/*! ../components/todo/NewTodoForm */ "./src/js/components/todo/NewTodoForm.tsx");
 var use_todo_list_1 = __webpack_require__(/*! ../hooks/use-todo-list */ "./src/js/hooks/use-todo-list.ts");
-var use_Auth_1 = __webpack_require__(/*! ../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
-var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var react_2 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
+var react_1 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
 var TodoTable_1 = __webpack_require__(/*! ../components/todo/TodoTable */ "./src/js/components/todo/TodoTable.tsx");
+var layout_1 = __webpack_require__(/*! ../components/layout/layout */ "./src/js/components/layout/layout.tsx");
 var Todo = function () {
     var _a = (0, use_todo_list_1.useTodoList)(), todoList = _a.todoList, addTodo = _a.addTodo, deleteTodo = _a.deleteTodo, filterWord = _a.filterWord, setFilterWord = _a.setFilterWord;
-    var _b = (0, use_Auth_1.useAuth)(), isLoggedIn = _b.isLoggedIn, logout = _b.logout, userName = _b.userName;
-    var navigate = (0, react_router_dom_1.useNavigate)();
-    // ログアウト中にアクセスされたら、/loginに遷移させる
-    (0, react_1.useEffect)(function () {
-        if (!isLoggedIn) {
-            navigate("/login");
-        }
-    }, [isLoggedIn]);
-    return (React.createElement(react_2.Box, { as: "main", w: "720px", mx: "auto", mt: "20" },
-        React.createElement(react_2.HStack, { as: "header", justifyContent: "space-between", spacing: "4" },
-            React.createElement(react_2.Heading, { as: "h1", size: "2xl" }, "TODO"),
-            React.createElement(react_2.HStack, { justifyContent: "end" },
-                React.createElement(react_2.HStack, { spacing: "2" },
-                    React.createElement(react_2.Avatar, { bg: 'teal.500', size: "xs" }),
-                    React.createElement(react_2.Box, null, userName)),
-                React.createElement(react_2.Box, null,
-                    React.createElement(react_2.Button, { onClick: logout, colorScheme: "red", size: "xs" }, "\u30ED\u30B0\u30A2\u30A6\u30C8")))),
-        React.createElement(react_2.Box, { mt: "20", as: "section" },
-            React.createElement(react_2.Heading, { as: "h2", size: "xl" }, "\u65B0\u898FTODO\u4F5C\u6210"),
+    return (React.createElement(layout_1.Layout, { title: "TODO" },
+        React.createElement(react_1.Box, { mt: "20", as: "section" },
+            React.createElement(react_1.Heading, { as: "h2", size: "xl" }, "\u65B0\u898FTODO\u4F5C\u6210"),
             React.createElement(NewTodoForm_1.NewTodoForm, { addTodo: addTodo })),
-        React.createElement(react_2.Box, { mt: "20", as: "section" },
-            React.createElement(react_2.Heading, { as: "h2", size: "xl" }, "TODO\u4E00\u89A7"),
-            React.createElement(react_2.Box, { mt: "10" },
-                React.createElement(react_2.Input, { placeholder: "\u7D5E\u8FBC\u307F", value: filterWord, onChange: function (e) { return setFilterWord(e.target.value); }, w: "40" }))),
-        React.createElement(react_2.Box, { mt: "10", as: "section" },
+        React.createElement(react_1.Box, { mt: "20", as: "section" },
+            React.createElement(react_1.Heading, { as: "h2", size: "xl" }, "TODO\u4E00\u89A7"),
+            React.createElement(react_1.Box, { mt: "10" },
+                React.createElement(react_1.Input, { placeholder: "\u7D5E\u8FBC\u307F", value: filterWord, onChange: function (e) { return setFilterWord(e.target.value); }, w: "40" }))),
+        React.createElement(react_1.Box, { mt: "10", as: "section" },
             React.createElement(TodoTable_1.TodoTable, { todoList: todoList, deleteTodo: deleteTodo }))));
 };
 exports.Todo = Todo;
@@ -71818,15 +71863,17 @@ var react_1 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakr
 var react_2 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 var use_todo_list_1 = __webpack_require__(/*! ../hooks/use-todo-list */ "./src/js/hooks/use-todo-list.ts");
+var layout_1 = __webpack_require__(/*! ../components/layout/layout */ "./src/js/components/layout/layout.tsx");
 var TodoDetail = function () {
     var id = (0, react_router_dom_1.useParams)().id;
     var todoList = (0, use_todo_list_1.useTodoList)().todoList;
     var todo = todoList.find(function (todo) { return todo.id === id; });
-    return (react_2.default.createElement(react_1.Box, null,
-        react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.id),
-        react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.task),
-        react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.person),
-        react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.deadline)));
+    return (react_2.default.createElement(layout_1.Layout, { title: "TODO\u8A73\u7D30" },
+        react_2.default.createElement(react_1.Box, { mt: "20", as: "section" },
+            react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.id),
+            react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.task),
+            react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.person),
+            react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.deadline))));
 };
 exports.TodoDetail = TodoDetail;
 
@@ -106459,7 +106506,7 @@ function __disposeResources(env) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("937a69cd2748abf6e10c")
+/******/ 		__webpack_require__.h = () => ("11bfe2e9903e4bebe1b3")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
