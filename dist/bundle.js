@@ -29983,7 +29983,7 @@ __webpack_require__.r(__webpack_exports__);
     if(true) {
       (function() {
         var localsJsonString = undefined;
-        // 1731680627443
+        // 1731764205644
         var cssReload = __webpack_require__(/*! ../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {});
         // only invalidate when locals change
         if (
@@ -71286,9 +71286,11 @@ var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/
 var Login_1 = __webpack_require__(/*! ./pages/Login */ "./src/js/pages/Login.tsx");
 var Todo_1 = __webpack_require__(/*! ./pages/Todo */ "./src/js/pages/Todo.tsx");
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+var TodoDetail_1 = __webpack_require__(/*! ./pages/TodoDetail */ "./src/js/pages/TodoDetail.tsx");
 var router = (0, react_router_dom_1.createBrowserRouter)((0, react_router_dom_1.createRoutesFromElements)(React.createElement(React.Fragment, null,
     React.createElement(react_router_dom_1.Route, { path: "/login", element: React.createElement(Login_1.Login, null) }),
-    React.createElement(react_router_dom_1.Route, { path: "/todo", element: React.createElement(Todo_1.Todo, null) }))));
+    React.createElement(react_router_dom_1.Route, { path: "/todo", element: React.createElement(Todo_1.Todo, null) }),
+    React.createElement(react_router_dom_1.Route, { path: "/todo/:id", element: React.createElement(TodoDetail_1.TodoDetail, null) }))));
 var App = function () { return React.createElement(react_router_dom_1.RouterProvider, { router: router }); };
 exports.App = App;
 
@@ -71396,6 +71398,7 @@ exports.TodoTable = (0, react_2.memo)(function (_a) {
         react_2.default.createElement(react_1.Table, { variant: 'simple' },
             react_2.default.createElement(react_1.Thead, null,
                 react_2.default.createElement(react_1.Tr, null,
+                    react_2.default.createElement(react_1.Th, null, "ID"),
                     react_2.default.createElement(react_1.Th, null, "\u30BF\u30B9\u30AF\u540D"),
                     react_2.default.createElement(react_1.Th, null, "\u62C5\u5F53\u8005\u540D"),
                     react_2.default.createElement(react_1.Th, null, "\u7DE0\u5207"))),
@@ -71442,10 +71445,14 @@ var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/
 var use_Auth_1 = __webpack_require__(/*! ../../hooks/use-Auth */ "./src/js/hooks/use-Auth.ts");
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_2 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 exports.TodoItem = (0, react_1.memo)(function (_a) {
     var id = _a.id, task = _a.task, person = _a.person, deadline = _a.deadline, deleteTodo = _a.deleteTodo;
     var userName = (0, use_Auth_1.useAuth)().userName;
     return (React.createElement(react_2.Tr, { color: userName === person ? "red" : "" },
+        React.createElement(react_2.Td, null,
+            React.createElement(react_router_dom_1.Link, { to: "/todo/".concat(id) }, id)),
+        React.createElement(react_2.Td, null, id),
         React.createElement(react_2.Td, null, task),
         React.createElement(react_2.Td, null, person),
         React.createElement(react_2.Td, null, deadline),
@@ -71583,7 +71590,7 @@ var useTodoList = function () {
     var addTodo = function (newTask, newPerson, newDeadline) {
         var updatedTodoList = __spreadArray(__spreadArray([], todoList, true), [
             {
-                id: Date.now(),
+                id: Date.now().toString(),
                 task: newTask,
                 person: newPerson,
                 deadline: newDeadline,
@@ -71790,6 +71797,38 @@ var Todo = function () {
             React.createElement(TodoTable_1.TodoTable, { todoList: todoList, deleteTodo: deleteTodo }))));
 };
 exports.Todo = Todo;
+
+
+/***/ }),
+
+/***/ "./src/js/pages/TodoDetail.tsx":
+/*!*************************************!*\
+  !*** ./src/js/pages/TodoDetail.tsx ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TodoDetail = void 0;
+var react_1 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
+var react_2 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+var use_todo_list_1 = __webpack_require__(/*! ../hooks/use-todo-list */ "./src/js/hooks/use-todo-list.ts");
+var TodoDetail = function () {
+    var id = (0, react_router_dom_1.useParams)().id;
+    var todoList = (0, use_todo_list_1.useTodoList)().todoList;
+    var todo = todoList.find(function (todo) { return todo.id === id; });
+    return (react_2.default.createElement(react_1.Box, null,
+        react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.id),
+        react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.task),
+        react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.person),
+        react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.deadline)));
+};
+exports.TodoDetail = TodoDetail;
 
 
 /***/ }),
@@ -106420,7 +106459,7 @@ function __disposeResources(env) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("11d778f04575c776f570")
+/******/ 		__webpack_require__.h = () => ("937a69cd2748abf6e10c")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

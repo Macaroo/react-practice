@@ -6,7 +6,7 @@ import { TodoItem } from "./Todoitem";
 
 type Props = {
     todoList: Todo[];
-    deleteTodo: (id: number) => void;
+    deleteTodo: (id: string) => void;
 };
 
 export const TodoTable =  memo(({ todoList, deleteTodo }: Props) => {
@@ -15,6 +15,7 @@ export const TodoTable =  memo(({ todoList, deleteTodo }: Props) => {
             <Table variant='simple'>
                 <Thead>
                 <Tr>
+                    <Th>ID</Th>
                     <Th>タスク名</Th>
                     <Th>担当者名</Th>
                     <Th>締切</Th>
