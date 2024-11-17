@@ -8,15 +8,18 @@ type Props = {
 };
 
 export const Layout = ({ title, children }: PropsWithChildren<Props>) => {
-    const { isLoggedIn, logout, userName } = useAuth();
+    const { isLoggedIn, isLoginCheckDone, logout, userName } = useAuth();
     const navigate = useNavigate();
     
     // ログアウト中にアクセスされたら、/loginに遷移させる
     useEffect(() => {
-        if (!isLoggedIn) {
+        if (isLoginCheckDone && !isLoggedIn) {
             navigate("/login");
         }
-    }, [isLoggedIn]);
+    }, [isLoginCheckDone, isLoggedIn]);
+
+    if (!isLoginCheckDone || !isLoggedIn) return null;
+
     return (
         <Box as="main" w="720px" mx="auto" mt="20">
             <HStack as="header" justifyContent="space-between" spacing="4">

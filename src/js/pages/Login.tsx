@@ -5,15 +5,17 @@ import { useNavigate } from "react-router-dom";
 import { Box, Button, Heading, HStack, Input } from "@chakra-ui/react";
 
 export const Login = () => {
-  const { isLoggedIn, login, userName, setUserName } = useAuth();
+  const { isLoggedIn, isLoginCheckDone, login, userName, setUserName } = useAuth();
   const navigate = useNavigate();
 
   // ログイン中だった場合は、/todoに推移させる
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isLoginCheckDone && isLoggedIn) {
       navigate("/todo");
     }
-  }, [isLoggedIn]);
+  }, [isLoginCheckDone, isLoggedIn]);
+
+  if (!isLoginCheckDone || isLoggedIn) return null;
 
   return (
     <Box as="main" w={400} mx="auto" mt="20">

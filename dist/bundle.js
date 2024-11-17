@@ -29983,7 +29983,7 @@ __webpack_require__.r(__webpack_exports__);
     if(true) {
       (function() {
         var localsJsonString = undefined;
-        // 1731766759318
+        // 1731805315387
         var cssReload = __webpack_require__(/*! ../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {});
         // only invalidate when locals change
         if (
@@ -71287,10 +71287,13 @@ var Login_1 = __webpack_require__(/*! ./pages/Login */ "./src/js/pages/Login.tsx
 var Todo_1 = __webpack_require__(/*! ./pages/Todo */ "./src/js/pages/Todo.tsx");
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 var TodoDetail_1 = __webpack_require__(/*! ./pages/TodoDetail */ "./src/js/pages/TodoDetail.tsx");
+var NotFound_1 = __webpack_require__(/*! ./pages/NotFound */ "./src/js/pages/NotFound.tsx");
 var router = (0, react_router_dom_1.createBrowserRouter)((0, react_router_dom_1.createRoutesFromElements)(React.createElement(React.Fragment, null,
+    React.createElement(react_router_dom_1.Route, { path: "/", element: React.createElement(react_router_dom_1.Navigate, { to: "/todo", replace: true }) }),
     React.createElement(react_router_dom_1.Route, { path: "/login", element: React.createElement(Login_1.Login, null) }),
     React.createElement(react_router_dom_1.Route, { path: "/todo", element: React.createElement(Todo_1.Todo, null) }),
-    React.createElement(react_router_dom_1.Route, { path: "/todo/:id", element: React.createElement(TodoDetail_1.TodoDetail, null) }))));
+    React.createElement(react_router_dom_1.Route, { path: "/todo/:id", element: React.createElement(TodoDetail_1.TodoDetail, null) }),
+    React.createElement(react_router_dom_1.Route, { path: "*", element: React.createElement(NotFound_1.NotFound, null) }))));
 var App = function () { return React.createElement(react_router_dom_1.RouterProvider, { router: router }); };
 exports.App = App;
 
@@ -71336,14 +71339,16 @@ var use_Auth_1 = __webpack_require__(/*! ../../hooks/use-Auth */ "./src/js/hooks
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 var Layout = function (_a) {
     var title = _a.title, children = _a.children;
-    var _b = (0, use_Auth_1.useAuth)(), isLoggedIn = _b.isLoggedIn, logout = _b.logout, userName = _b.userName;
+    var _b = (0, use_Auth_1.useAuth)(), isLoggedIn = _b.isLoggedIn, isLoginCheckDone = _b.isLoginCheckDone, logout = _b.logout, userName = _b.userName;
     var navigate = (0, react_router_dom_1.useNavigate)();
     // ログアウト中にアクセスされたら、/loginに遷移させる
     (0, react_2.useEffect)(function () {
-        if (!isLoggedIn) {
+        if (isLoginCheckDone && !isLoggedIn) {
             navigate("/login");
         }
-    }, [isLoggedIn]);
+    }, [isLoginCheckDone, isLoggedIn]);
+    if (!isLoginCheckDone || !isLoggedIn)
+        return null;
     return (react_2.default.createElement(react_1.Box, { as: "main", w: "720px", mx: "auto", mt: "20" },
         react_2.default.createElement(react_1.HStack, { as: "header", justifyContent: "space-between", spacing: "4" },
             react_2.default.createElement(react_1.Heading, { as: "h1", size: "2xl" }, title),
@@ -71564,14 +71569,17 @@ var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 exports.AuthContext = (0, react_1.createContext)({
     isLoggedIn: false,
     setIsLoggedIn: function () { },
+    isLoginCheckDone: false,
+    setIsLoginCheckDone: function () { },
     userName: "",
     setUserName: function () { },
 });
 var AuthProvider = function (_a) {
     var children = _a.children;
     var _b = (0, react_1.useState)(false), isLoggedIn = _b[0], setIsLoggedIn = _b[1];
-    var _c = (0, react_1.useState)(""), userName = _c[0], setUserName = _c[1];
-    return (React.createElement(exports.AuthContext.Provider, { value: { isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn, userName: userName, setUserName: setUserName } }, children));
+    var _c = (0, react_1.useState)(false), isLoginCheckDone = _c[0], setIsLoginCheckDone = _c[1];
+    var _d = (0, react_1.useState)(""), userName = _d[0], setUserName = _d[1];
+    return (React.createElement(exports.AuthContext.Provider, { value: { isLoggedIn: isLoggedIn, setIsLoggedIn: setIsLoggedIn, isLoginCheckDone: isLoginCheckDone, setIsLoginCheckDone: setIsLoginCheckDone, userName: userName, setUserName: setUserName } }, children));
 };
 exports.AuthProvider = AuthProvider;
 
@@ -71592,7 +71600,7 @@ var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var AuthContexts_1 = __webpack_require__(/*! ../contexts/AuthContexts */ "./src/js/contexts/AuthContexts.tsx");
 var USER_NAME_KEY = "user-name";
 var useAuth = function () {
-    var _a = (0, react_1.useContext)(AuthContexts_1.AuthContext), isLoggedIn = _a.isLoggedIn, setIsLoggedIn = _a.setIsLoggedIn, userName = _a.userName, setUserName = _a.setUserName;
+    var _a = (0, react_1.useContext)(AuthContexts_1.AuthContext), isLoggedIn = _a.isLoggedIn, setIsLoggedIn = _a.setIsLoggedIn, isLoginCheckDone = _a.isLoginCheckDone, setIsLoginCheckDone = _a.setIsLoginCheckDone, userName = _a.userName, setUserName = _a.setUserName;
     var login = function () {
         if (userName) {
             setIsLoggedIn(true);
@@ -71612,8 +71620,9 @@ var useAuth = function () {
             setUserName(userNameData);
             setIsLoggedIn(true);
         }
+        setIsLoginCheckDone(true);
     }, []);
-    return { isLoggedIn: isLoggedIn, login: login, logout: logout, userName: userName, setUserName: setUserName };
+    return { isLoggedIn: isLoggedIn, isLoginCheckDone: isLoginCheckDone, login: login, logout: logout, userName: userName, setUserName: setUserName };
 };
 exports.useAuth = useAuth;
 
@@ -71770,14 +71779,16 @@ var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 var react_2 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
 var Login = function () {
-    var _a = (0, use_Auth_1.useAuth)(), isLoggedIn = _a.isLoggedIn, login = _a.login, userName = _a.userName, setUserName = _a.setUserName;
+    var _a = (0, use_Auth_1.useAuth)(), isLoggedIn = _a.isLoggedIn, isLoginCheckDone = _a.isLoginCheckDone, login = _a.login, userName = _a.userName, setUserName = _a.setUserName;
     var navigate = (0, react_router_dom_1.useNavigate)();
     // ログイン中だった場合は、/todoに推移させる
     (0, react_1.useEffect)(function () {
-        if (isLoggedIn) {
+        if (isLoginCheckDone && isLoggedIn) {
             navigate("/todo");
         }
-    }, [isLoggedIn]);
+    }, [isLoginCheckDone, isLoggedIn]);
+    if (!isLoginCheckDone || isLoggedIn)
+        return null;
     return (React.createElement(react_2.Box, { as: "main", w: 400, mx: "auto", mt: "20" },
         React.createElement(react_2.Heading, { as: "h1", size: "xl" }, "\u30ED\u30B0\u30A4\u30F3"),
         React.createElement(react_2.HStack, { spacing: 4, mt: 10 },
@@ -71785,6 +71796,31 @@ var Login = function () {
             React.createElement(react_2.Button, { colorScheme: "blue", onClick: login }, "\u30ED\u30B0\u30A4\u30F3"))));
 };
 exports.Login = Login;
+
+
+/***/ }),
+
+/***/ "./src/js/pages/NotFound.tsx":
+/*!***********************************!*\
+  !*** ./src/js/pages/NotFound.tsx ***!
+  \***********************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.NotFound = void 0;
+var react_1 = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/react/dist/cjs/index.cjs");
+var react_2 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var NotFound = function () {
+    return (react_2.default.createElement(react_1.Box, { as: "main", w: 400, mx: "auto", mt: "20" },
+        react_2.default.createElement(react_1.Heading, { as: "h1", size: "xl" }, "404\u30A8\u30E9\u30FC"),
+        react_2.default.createElement(react_1.Box, null, "\u30DA\u30FC\u30B8\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3067\u3057\u305F\u3002")));
+};
+exports.NotFound = NotFound;
 
 
 /***/ }),
@@ -71864,10 +71900,13 @@ var react_2 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 var use_todo_list_1 = __webpack_require__(/*! ../hooks/use-todo-list */ "./src/js/hooks/use-todo-list.ts");
 var layout_1 = __webpack_require__(/*! ../components/layout/layout */ "./src/js/components/layout/layout.tsx");
+var NotFound_1 = __webpack_require__(/*! ./NotFound */ "./src/js/pages/NotFound.tsx");
 var TodoDetail = function () {
     var id = (0, react_router_dom_1.useParams)().id;
     var todoList = (0, use_todo_list_1.useTodoList)().todoList;
     var todo = todoList.find(function (todo) { return todo.id === id; });
+    if (!todo)
+        return react_2.default.createElement(NotFound_1.NotFound, null);
     return (react_2.default.createElement(layout_1.Layout, { title: "TODO\u8A73\u7D30" },
         react_2.default.createElement(react_1.Box, { mt: "20", as: "section" },
             react_2.default.createElement(react_1.Box, null, todo === null || todo === void 0 ? void 0 : todo.id),
@@ -106506,7 +106545,7 @@ function __disposeResources(env) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("11bfe2e9903e4bebe1b3")
+/******/ 		__webpack_require__.h = () => ("42cd931fdf30df71592f")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
