@@ -1,11 +1,14 @@
 import * as React from "react";
-import { useAuth } from "../hooks/use-Auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Heading, HStack, Input } from "@chakra-ui/react";
+import { useAuthStore } from "../stores/use-auth-store";
 
 export const Login = () => {
-  const { isLoggedIn, isLoginCheckDone, login, userName, setUserName } = useAuth();
+  const { isLoggedIn, isLoginCheckDone, login } = useAuthStore();
+
+  const [ userName, setUserName ] = useState<string>("");
+
   const navigate = useNavigate();
 
   // ログイン中だった場合は、/todoに推移させる
@@ -27,7 +30,7 @@ export const Login = () => {
           onChange={(e) => setUserName(e.target.value)}
           w="40"
         />
-        <Button colorScheme="blue" onClick={login}>
+        <Button colorScheme="blue" onClick={() => login(userName)}>
           ログイン
         </Button>
       </HStack>
