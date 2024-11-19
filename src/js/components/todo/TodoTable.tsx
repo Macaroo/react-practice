@@ -19,6 +19,7 @@ export const TodoTable =  memo(({ todoList, deleteTodo }: Props) => {
                     <Th>タスク名</Th>
                     <Th>担当者名</Th>
                     <Th>締切</Th>
+                    <Th>削除</Th>
                 </Tr>
                 </Thead>
                 <Tbody>

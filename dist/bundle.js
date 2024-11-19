@@ -29983,7 +29983,7 @@ __webpack_require__.r(__webpack_exports__);
     if(true) {
       (function() {
         var localsJsonString = undefined;
-        // 1731898804833
+        // 1731990620829
         var cssReload = __webpack_require__(/*! ../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {});
         // only invalidate when locals change
         if (
@@ -71469,7 +71469,8 @@ exports.TodoTable = (0, react_2.memo)(function (_a) {
                     react_2.default.createElement(react_1.Th, null, "ID"),
                     react_2.default.createElement(react_1.Th, null, "\u30BF\u30B9\u30AF\u540D"),
                     react_2.default.createElement(react_1.Th, null, "\u62C5\u5F53\u8005\u540D"),
-                    react_2.default.createElement(react_1.Th, null, "\u7DE0\u5207"))),
+                    react_2.default.createElement(react_1.Th, null, "\u7DE0\u5207"),
+                    react_2.default.createElement(react_1.Th, null, "\u524A\u9664"))),
             react_2.default.createElement(react_1.Tbody, null, todoList.map(function (todo) { return (react_2.default.createElement(Todoitem_1.TodoItem, { key: todo.id, id: todo.id, task: todo.task, person: todo.person, deadline: todo.deadline, deleteTodo: function () { return deleteTodo(todo.id); } })); })))));
 });
 
@@ -71520,7 +71521,6 @@ exports.TodoItem = (0, react_1.memo)(function (_a) {
     return (React.createElement(react_2.Tr, { color: userName === person ? "red" : "" },
         React.createElement(react_2.Td, null,
             React.createElement(react_router_dom_1.Link, { to: "/todo/".concat(id) }, id)),
-        React.createElement(react_2.Td, null, id),
         React.createElement(react_2.Td, null, task),
         React.createElement(react_2.Td, null, person),
         React.createElement(react_2.Td, null, deadline),
@@ -107047,7 +107047,7 @@ function __disposeResources(env) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("b088d312caaba9aeec49")
+/******/ 		__webpack_require__.h = () => ("09130805be56473e90f2")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

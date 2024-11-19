@@ -21,7 +21,6 @@ export const TodoItem = memo
         <Td>
           <Link to = {`/todo/${id}`}>{id}</Link>
         </Td>
-        <Td>{id}</Td>
         <Td>{task}</Td>
         <Td>{person}</Td>
         <Td>{deadline}</Td>
