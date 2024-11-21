@@ -1,21 +1,26 @@
 import * as React from "react";
-import { NewTodoForm } from "../components/todo/NewTodoForm";
+import { NewTodoForm } from "../components/todo/new-todo-form";
 import { useTodoList } from "../hooks/use-todo-list";
 import { Box, Heading, Input } from "@chakra-ui/react";
-import { TodoTable } from "../components/todo/TodoTable";
-import { Layout } from "../components/layout/layout";
+import { TodoTable } from "../components/todo/todo-table";
+import { Layout } from "../components/layout";
 
 export const Todo = () => {
-  const { todoList, addTodo, deleteTodo, filterWord, setFilterWord } = useTodoList();
+  const { todoList, addTodo, deleteTodo, filterWord, setFilterWord } =
+    useTodoList();
 
   return (
     <Layout title="TODO">
       <Box mt="20" as="section">
-        <Heading as="h2" size="xl">新規TODO作成</Heading>
+        <Heading as="h2" size="xl">
+          新規TODO作成
+        </Heading>
         <NewTodoForm addTodo={addTodo} />
       </Box>
       <Box mt="20" as="section">
-        <Heading as="h2" size="xl">TODO一覧</Heading>
+        <Heading as="h2" size="xl">
+          TODO一覧
+        </Heading>
         <Box mt="10">
           <Input
             placeholder="絞込み"
@@ -27,10 +32,7 @@ export const Todo = () => {
         {/* <TodoList todoList={todoList} deleteTodo={deleteTodo} /> */}
       </Box>
       <Box mt="10" as="section">
-        <TodoTable
-          todoList={todoList}
-          deleteTodo={deleteTodo}
-        />
+        <TodoTable todoList={todoList} deleteTodo={deleteTodo} />
       </Box>
     </Layout>
   );
