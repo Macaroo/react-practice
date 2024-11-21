@@ -5,7 +5,7 @@ export const useTodoList = () => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
   const [filterWord, setFilterWord] = useState<string>("");
 
-  // マウント時に、一度だけLocalStorageからtodo一覧のデータを保存する
+  // マウント時に、一度だけLocalStorageからtodo一覧のデータを取得する
   useEffect(() => {
     const todoListData = localStorage.getItem("todo-list");
     if (todoListData) {

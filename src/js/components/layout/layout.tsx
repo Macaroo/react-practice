@@ -38,5 +38,5 @@ export const Layout = ({ title, children }: PropsWithChildren<Props>) => {
             </HStack>
             {children}
         </Box>
-    )
-}
+    );
+};
