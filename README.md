@@ -9,6 +9,9 @@
 
 * 主婦業で忙しい中TODOアプリで管理できたらなという思いで制作しました。
 
+デモ動画
+
+https://youtu.be/21LzXNKLsj4
 環境
 
 * 使用言語: React,Typescript
