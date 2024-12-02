@@ -15,7 +15,7 @@
 
 環境
 
-* 使用言語: React,Typescript
+* 使用言語: React 18.3.11, Typescript 5.6.3
 * 検証済みOS: Mac OS 15.1.1
 
 利用方法
